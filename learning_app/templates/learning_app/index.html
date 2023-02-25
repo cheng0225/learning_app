@@ -1,0 +1,28 @@
+{% extends 'learning_app/base.html' %}
+{% load static %}
+
+{% block page_header %}
+    <style type="text/css">
+        body{
+            background-image:url("{% static 'learning_app/img/小青.jpg' %}");
+            background-repeat:repeat;
+            background-size:100%;
+        }
+    </style>
+    <div class="jumborton">
+        <h1 class="display-3">track your learning.</h1>
+        <p class="lead">make your own learning log, and keep a list of the topics
+            you're learning about. whenever you learn something new about a topic,
+            make an entry summarizing what you've learning.</p>
+        {% if user.is_authenticated %}
+            <a class="btn btn-lg btn-primary" href="{% url 'learning_app:topics' %}"
+               role="button">开卷 &raquo;</a>
+        {% else %}
+            <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}"
+               role="button">注册 &raquo;</a>
+            <a class="btn btn-lg btn-primary" href="{% url 'users:login' %}"
+               role="button">登录 &raquo;</a>
+        {% endif %}
+    </div>
+{% endblock page_header %}
+
